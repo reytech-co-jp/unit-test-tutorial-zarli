@@ -16,8 +16,8 @@ public class Anime {
         this.genre = genre;
     }
 
-    public Anime() {
-    }
+public Anime() {
+}
 
     public Integer getId() {
         return id;

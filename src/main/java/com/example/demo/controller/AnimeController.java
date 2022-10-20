@@ -17,9 +17,9 @@ public class AnimeController {
 
     private final AnimeService animeService;
 
-    public AnimeController(AnimeService animeService) {
-        this.animeService = animeService;
-    }
+public AnimeController(AnimeService animeService) {
+    this.animeService = animeService;
+}
 
     @GetMapping
     public List<Anime> getAllAnime() {

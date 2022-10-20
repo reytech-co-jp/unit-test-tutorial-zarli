@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Anime;
+import com.example.demo.*;
 import com.example.demo.form.AnimeForm;
 import com.example.demo.service.AnimeService;
 import org.springframework.http.ResponseEntity;

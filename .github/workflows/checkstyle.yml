@@ -2,9 +2,9 @@ name: Checkstyle
 
 on:
   push:
-    branches: [ feature/checkstyle_ci ]
+    branches: [ main ]
   pull_request:
-    branches: [ feature/checkstyle_ci ]
+    branches:
 
 permissions:
   contents: read
@@ -29,3 +29,4 @@ jobs:
         tool_name: 'testtool'
         checkstyle_config: 'config/checkstyle/checkstyle.xml'
         workdir: 'src/main'
+        fail_on_error: true

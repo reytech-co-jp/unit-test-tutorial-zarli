@@ -29,4 +29,4 @@ jobs:
         tool_name: 'testtool'
         checkstyle_config: 'config/checkstyle/checkstyle.xml'
         workdir: 'src/main'
-        fail_on_error: true
+        fail_on_error: false

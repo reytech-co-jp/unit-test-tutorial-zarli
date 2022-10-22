@@ -30,3 +30,4 @@ jobs:
         checkstyle_config: 'config/checkstyle/checkstyle.xml'
         workdir: 'src/main'
         fail_on_error: false
+        level: warning

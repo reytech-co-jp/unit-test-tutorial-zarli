@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.*;
+import com.example.demo.entity.Anime;
 import com.example.demo.form.AnimeForm;
 import com.example.demo.service.AnimeService;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +17,9 @@ public class AnimeController {
 
     private final AnimeService animeService;
 
-public AnimeController(AnimeService animeService) 
-
-{this.animeService 
-    = animeService;
-}
+    public AnimeController(AnimeService animeService) {
+        this.animeService = animeService;
+    }
 
     @GetMapping
     public List<Anime> getAllAnime() {

@@ -58,12 +58,12 @@ public class AnimeController {
     }
 
     @DeleteMapping(path = "{animeId}")
-    public ResponseEntity<String> deleteAnime(@PathVariable("animeId") Integer id) {
-        animeService.deleteAnime(id);
-        URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
-                .path("api/anime/" + id)
-                .build()
-                .toUri();
-        return ResponseEntity.created(url).body("anime successfully deleted");
-    }
+public ResponseEntity<String> deleteAnime(@PathVariable("animeId") Integer id) {
+    animeService.deleteAnime(id);
+    URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
+            .path("api/anime/" + id)
+            .build()
+            .toUri();
+    return ResponseEntity.created(url).body("anime successfully deleted");
+}
 }

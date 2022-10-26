@@ -3,19 +3,13 @@ package com.example.demo.controller;
 import com.example.demo.entity.Anime;
 import com.example.demo.form.AnimeForm;
 import com.example.demo.service.AnimeService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
-import javax.validation.Valid;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping(path = "/api/anime")
@@ -58,12 +52,12 @@ public class AnimeController {
     }
 
     @DeleteMapping(path = "{animeId}")
-public ResponseEntity<String> deleteAnime(@PathVariable("animeId") Integer id) {
-    animeService.deleteAnime(id);
-    URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
-            .path("api/anime/" + id)
-            .build()
-            .toUri();
-    return ResponseEntity.created(url).body("anime successfully deleted");
-}
+    public ResponseEntity<String> deleteAnime(@PathVariable("animeId") Integer id) {
+        animeService.deleteAnime(id);
+        URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
+                .path("api/anime/" + id)
+                .build()
+                .toUri();
+        return ResponseEntity.created(url).body("anime successfully deleted");
+    }
 }

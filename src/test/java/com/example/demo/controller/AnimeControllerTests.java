@@ -29,7 +29,6 @@ class AnimeControllerTests {
 
         int status = mvcResult.getResponse().getStatus();
 
-        assertEquals(400, status);
+        assertEquals(200, status);
     }
-
 }

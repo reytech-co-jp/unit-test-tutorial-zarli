@@ -3,7 +3,7 @@ name: Checkstyle & JUnit Test
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ feature/summarizing_all_ci ]
   pull_request:
     branches:
 

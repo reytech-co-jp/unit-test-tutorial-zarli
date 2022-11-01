@@ -36,6 +36,14 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: 'github-pr-check'
           tool_name: 'testtool'
-          checkstyle_config: 'config/checkstyle/checkstyle.xml'
+          checkstyle_config: 'config/checkstyle/exclude.xml'
           workdir: 'src/main'
           level: error
+      - name: Run SpotBugs
+        run: ./gradlew spotbugsMain
+      - name: Upload SpotBugs Report
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: test results
+          path: build/reports/spotbugs/main.html

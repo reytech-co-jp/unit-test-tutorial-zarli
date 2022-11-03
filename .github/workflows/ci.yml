@@ -47,7 +47,8 @@ jobs:
         with:
           name: test results
           path: build/reports/spotbugs/main.html
-      #        TO DO CIを1つにする時、失敗した時送る処理
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:

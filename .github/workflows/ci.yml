@@ -3,7 +3,7 @@ name: junit test & checkstyle & spotbugs & code coverage
 on:
   workflow_dispatch:
   push:
-    branches: [ feature/summarizing_all_ci ]
+    branches: [ main ]
   pull_request:
     branches:
 

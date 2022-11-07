@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.7.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'com.github.spotbugs' version '5.0.6'
 }
 
 group = 'com.example'
@@ -19,8 +20,22 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    spotbugsPlugins "com.mebigfatguy.fb-contrib:fb-contrib:7.4.7"
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+spotbugs {
+    spotbugsTest.enabled = false
+    excludeFilter = file("config/spotbugs/exclude.xml")
+}
+
+spotbugsMain {
+    reports {
+        html {
+            enabled = true
+        }
+    }
 }

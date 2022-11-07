@@ -1,4 +1,4 @@
-name: Checkstyle & JUnit Test
+name: junit test & checkstyle & spotbugs & code coverage
 
 on:
   workflow_dispatch:
@@ -39,3 +39,11 @@ jobs:
           checkstyle_config: 'config/checkstyle/checkstyle.xml'
           workdir: 'src/main'
           level: error
+      - name: Run SpotBugs
+        run: ./gradlew spotbugsMain
+      - name: Upload SpotBugs Report
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: test results
+          path: build/reports/spotbugs/main.html

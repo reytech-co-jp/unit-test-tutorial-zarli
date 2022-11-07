@@ -50,13 +50,13 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
       - name: Slack Notification
+        if: always()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: general
-          SLACK_COLOR: ${{ job.status }} # or specific color like 'good' or '#ff00ff'
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://github.com/rtCamp.png?size=48
           SLACK_MESSAGE: 'Post Content :rocket:'
           SLACK_TITLE: Post Title
           SLACK_USERNAME: rtCamp
-          webhook: https://hooks.slack.com/services/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
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

@@ -36,7 +36,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: 'github-pr-check'
           tool_name: 'testtool'
-          checkstyle_config: 'config/checkstyle/exclude.xml'
+          checkstyle_config: 'config/checkstyle/checkstyle.xml'
           workdir: 'src/main'
           level: error
       - name: Run SpotBugs

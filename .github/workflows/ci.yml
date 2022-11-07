@@ -41,6 +41,7 @@ jobs:
           level: error
       - name: Run SpotBugs
         run: ./gradlew spotbugsMain
+        if: always()
       - name: Upload SpotBugs Report
         uses: actions/upload-artifact@v1
         if: always()

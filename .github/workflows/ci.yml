@@ -49,6 +49,7 @@ jobs:
           path: build/reports/spotbugs/main.html
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
+        if: always()
       - name: Slack Notification
         if: always()
         uses: rtCamp/action-slack-notify@v2

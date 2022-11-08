@@ -17,7 +17,7 @@ public class AnimeService {
     }
 
     public List<Anime> getAllAnime() {
-        return animeMapper.findAll();
+    return animeMapper.findAll();
     }
 
     public Anime getAnime(Integer id) {

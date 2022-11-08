@@ -1,8 +1,9 @@
-package com.example.demo.service;
+package com.example.demo.test;
 
 import com.example.demo.entity.Anime;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.AnimeMapper;
+import com.example.demo.service.AnimeService;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

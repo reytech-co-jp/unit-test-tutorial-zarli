@@ -46,6 +46,7 @@ jobs:
         uses: actions/upload-artifact@v1
         if: always()
         with:
+          name: SpotBugs_test_report
           path: build/reports/spotbugs/main.html
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3

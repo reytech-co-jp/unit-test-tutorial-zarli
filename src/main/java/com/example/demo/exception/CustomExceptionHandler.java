@@ -1,5 +1,9 @@
 package com.example.demo.exception;
 
+import java.time.ZonedDateTime;
+import java.util.HashMap;
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -7,16 +11,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.servlet.http.HttpServletRequest;
-import java.time.ZonedDateTime;
-import java.util.HashMap;
-import java.util.Map;
-
 @RestControllerAdvice
 public class CustomExceptionHandler {
-
-    private MethodArgumentNotValidException e;
-    private HttpServletRequest request;
 
     @ExceptionHandler(value = ResourceNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleNoResourceFound(ResourceNotFoundException e, HttpServletRequest request) {

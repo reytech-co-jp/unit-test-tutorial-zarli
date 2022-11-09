@@ -3,10 +3,9 @@ package com.example.demo.service;
 import com.example.demo.entity.Anime;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.AnimeMapper;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class AnimeService {
@@ -18,8 +17,7 @@ public class AnimeService {
     }
 
     public List<Anime> getAllAnime() {
-        List<Anime> animeList = animeMapper.findAll();
-        return animeList;
+        return animeMapper.findAll();
     }
 
     public Anime getAnime(Integer id) {

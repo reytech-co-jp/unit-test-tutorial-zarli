@@ -49,4 +49,9 @@ public class Anime {
         Anime anime = (Anime) o;
         return Objects.equals(id, anime.id) && Objects.equals(name, anime.name) && Objects.equals(genre, anime.genre);
     }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, genre);
+    }
 }

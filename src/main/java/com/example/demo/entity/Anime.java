@@ -44,16 +44,19 @@ public class Anime {
     
     @Override
     public boolean equals(Object o) {
+    	
         if (this == o) {
-        	return true;
+    	return true;
         }
+        
         if (o == null || getClass() != o.getClass()) {
-        	return false;
+    	return false;
         }
+        
         Anime anime = (Anime) o;
         return Objects.equals(id, anime.id) 
-        		&& Objects.equals(name, anime.name) 
-        		&& Objects.equals(genre, anime.genre);
+    		&& Objects.equals(name, anime.name) 
+    		&& Objects.equals(genre, anime.genre);
     }
     
     @Override

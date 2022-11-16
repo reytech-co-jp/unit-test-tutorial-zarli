@@ -51,9 +51,9 @@ public class Anime {
             return false;
         }
         Anime anime = (Anime) o;
-        return Objects.equals(id, anime.id) &&
-                Objects.equals(name, anime.name) &&
-                Objects.equals(genre, anime.genre);
+        return Objects.equals(id, anime.id)
+                && Objects.equals(name, anime.name)
+                && Objects.equals(genre, anime.genre);
     }
 
     @Override

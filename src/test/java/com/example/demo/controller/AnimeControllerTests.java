@@ -18,6 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(SpringExtension.class)
 class AnimeControllerTests {
     @Autowired
+
+
     private MockMvc mvc;
 
     @Test

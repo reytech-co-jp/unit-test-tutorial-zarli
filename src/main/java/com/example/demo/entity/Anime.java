@@ -41,17 +41,15 @@ public class Anime {
                 ", genre='" + genre + '\'' +
                 '}';
     }
-    
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) { return true; }
-        if (o == null || getClass() != o.getClass()) { return false; }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Anime anime = (Anime) o;
-        return Objects.equals(id, anime.id) 
-        		&& Objects.equals(name, anime.name) 
-        		&& Objects.equals(genre, anime.genre);
+        return Objects.equals(id, anime.id) && Objects.equals(name, anime.name) && Objects.equals(genre, anime.genre);
     }
-    
+
     @Override
     public int hashCode() {
         return Objects.hash(id, name, genre);

@@ -1,53 +1,52 @@
 package com.example.demo.mapper;
 
+import com.example.demo.entity.Anime;
+import com.github.database.rider.core.api.dataset.DataSet;
+import com.github.database.rider.spring.api.DBRider;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 
-import com.example.demo.entity.Anime;
-import com.github.database.rider.core.api.dataset.DataSet;
-import com.github.database.rider.spring.api.DBRider;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DBRider
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class AnimeMapperTests {
-	@Autowired
-	AnimeMapper animeMapper;
-	
-	@Test
-    @DataSet(value = "datatests/anime.yml")
-    void ƒAƒjƒ‚ª‘SŒŽæ“¾‚Å‚«‚é‚±‚Æ() {
-	   List<Anime> animeList = Arrays.asList(new Anime(1, "Anime1", "Action"), new Anime(2, "Anime2", "Adventure"));
-       List<Anime> expectedAnimeList = animeMapper.findAll();
-       assertThat(expectedAnimeList).hasSize(2).containsAll(animeList);
-       
+    @Autowired
+    AnimeMapper animeMapper;
+
+    @Test
+    @DataSet(value = "anime.yml")
+    void ã‚¢ãƒ‹ãƒ¡ãŒå…¨ä»¶å–å¾—ã§ãã‚‹ã“ã¨() {
+        List<Anime> animeList = Arrays.asList(new Anime(1, "Anime1", "Action"), new Anime(2, "Anime2", "Adventure"));
+        List<Anime> expectedAnimeList = animeMapper.findAll();
+        assertThat(expectedAnimeList).hasSize(2).containsAll(animeList);
+
     }
-	
-	@Test
-	@DataSet(value = "datatests/empty.yml")
-    void ƒAƒjƒ‚ª‹ó‚É‚È‚é‚±‚Æ() {
+
+    @Test
+    @DataSet(value = "empty.yml")
+    void ã‚¢ãƒ‹ãƒ¡ãŒç©ºã«ãªã‚‹ã“ã¨() {
         List<Anime> animeList = animeMapper.findAll();
         assertThat(animeList).isEmpty();
     }
-	
-	@Test
-	@DataSet(value = "datatests/anime.yml")
-    void ˆø”‚Ìid‚ÅƒAƒjƒ‚ðŽæ“¾‚Å‚«‚é‚±‚Æ() {
+
+    @Test
+    @DataSet(value = "anime.yml")
+    void å¼•æ•°ã®idã§ã‚¢ãƒ‹ãƒ¡ã‚’å–å¾—ã§ãã‚‹ã“ã¨() {
         Optional<Anime> anime = animeMapper.findById(1);
         assertThat(anime).contains(new Anime(1, "Anime1", "Action"));
     }
 
     @Test
-    @DataSet(value = "datatests/empty.yml")
-    void ˆø”‚Ìid‚É‘Î‰ž‚µ‚½ƒAƒjƒ‚ª‘¶Ý‚µ‚È‚¢Žž_‹ó‚ÌOptional‚ðŽæ“¾‚·‚é‚±‚Æ() {
+    @DataSet(value = "empty.yml")
+    void å¼•æ•°ã®idã«å¯¾ã—ãŸã‚¢ãƒ‹ãƒ¡ãŒå­˜åœ¨ã—ãªã„æ™‚_ç©ºã®Optionalã‚’å–å¾—ã™ã‚‹ã“ã¨() {
         Optional<Anime> anime = animeMapper.findById(3);
         assertThat(anime).isEmpty();
     }

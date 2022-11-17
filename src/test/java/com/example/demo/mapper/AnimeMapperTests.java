@@ -8,7 +8,6 @@ import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,31 +22,34 @@ class AnimeMapperTests {
 
     @Test
     @DataSet(value = "anime.yml")
-    void アニメが全件取得できること() {
-        List<Anime> animeList = Arrays.asList(new Anime(1, "Anime1", "Action"), new Anime(2, "Anime2", "Adventure"));
-        List<Anime> actualAnimeResult = animeMapper.findAll();
-        assertThat(actualAnimeResult).hasSize(2).containsAll(animeList);
-
+    void すべてのアニメが取得できること() {
+        List<Anime> animeList = animeMapper.findAll();
+        assertThat(animeList)
+                .hasSize(2)
+                .contains(
+                        new Anime(1, "Anime1", "Action"),
+                        new Anime(2, "Anime2", "Adventure")
+                );
     }
 
     @Test
     @DataSet(value = "empty.yml")
-    void アニメが空になること() {
-        List<Anime> actualAnimeResult = animeMapper.findAll();
-        assertThat(actualAnimeResult).isEmpty();
+    void アニメが存在しない場合に空のListが取得できること() {
+        List<Anime> animeList = animeMapper.findAll();
+        assertThat(animeList).isEmpty();
     }
 
     @Test
     @DataSet(value = "anime.yml")
-    void 引数のidでアニメを取得できること() {
-        Optional<Anime> actualAnimeResult = animeMapper.findById(1);
-        assertThat(actualAnimeResult).contains(new Anime(1, "Anime1", "Action"));
+    void 引数のidに対応したアニメを取得できること() {
+        Optional<Anime> anime = animeMapper.findById(1);
+        assertThat(anime).contains(new Anime(1, "Anime1", "Action"));
     }
 
     @Test
-    @DataSet(value = "empty.yml")
-    void 引数のidに対したアニメが存在しない時_空のOptionalを取得すること() {
-        Optional<Anime> actualAnimeResult = animeMapper.findById(3);
-        assertThat(actualAnimeResult).isEmpty();
+    @DataSet(value = "anime.yml")
+    void 引数のidに対応したアニメが存在しない時_空のOptionalを取得すること() {
+        Optional<Anime> anime = animeMapper.findById(3);
+        assertThat(anime).isEmpty();
     }
 }

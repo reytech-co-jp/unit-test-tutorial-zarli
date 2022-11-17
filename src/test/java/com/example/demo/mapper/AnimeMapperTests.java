@@ -22,7 +22,7 @@ class AnimeMapperTests {
 
     @Test
     @DataSet(value = "anime.yml")
-    void すべてのアニメが取得できること() {
+    void アニメが全件取得できること() {
         List<Anime> animeList = animeMapper.findAll();
         assertThat(animeList)
                 .hasSize(2)
@@ -34,21 +34,21 @@ class AnimeMapperTests {
 
     @Test
     @DataSet(value = "empty.yml")
-    void アニメが存在しない場合に空のListが取得できること() {
+    void アニメが空になること() {
         List<Anime> animeList = animeMapper.findAll();
         assertThat(animeList).isEmpty();
     }
 
     @Test
     @DataSet(value = "anime.yml")
-    void 引数のidに対応したアニメを取得できること() {
+    void 引数のidでアニメを取得できること() {
         Optional<Anime> anime = animeMapper.findById(1);
         assertThat(anime).contains(new Anime(1, "Anime1", "Action"));
     }
 
     @Test
     @DataSet(value = "anime.yml")
-    void 引数のidに対応したアニメが存在しない時_空のOptionalを取得すること() {
+    void 引数のidに対したアニメが存在しない時_空のOptionalを取得すること() {
         Optional<Anime> anime = animeMapper.findById(3);
         assertThat(anime).isEmpty();
     }

@@ -22,7 +22,7 @@ class AnimeMapperTests {
 
     @Test
     @DataSet(value = "anime.yml")
-    void アニメが全件取得できること() {
+    void アニメが全部取得できること() {
         List<Anime> animeList = animeMapper.findAll();
         assertThat(animeList)
                 .hasSize(2)

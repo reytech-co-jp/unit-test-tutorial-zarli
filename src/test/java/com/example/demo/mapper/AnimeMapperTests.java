@@ -34,7 +34,7 @@ class AnimeMapperTests {
 
     @Test
     @DataSet(value = "empty.yml")
-    void アニメが空になること() {
+    void アニメが登録されていない時に空のListが取得できること() {
         List<Anime> animeList = animeMapper.findAll();
         assertThat(animeList).isEmpty();
     }

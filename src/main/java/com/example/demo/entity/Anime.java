@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.util.Objects;
+
 public class Anime {
     private Integer id;
     private String name;
@@ -38,5 +40,21 @@ public class Anime {
                 ", name='" + name + '\'' +
                 ", genre='" + genre + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Anime anime = (Anime) o;
+        return Objects.equals(id, anime.id)
+                && Objects.equals(name, anime.name)
+                && Objects.equals(genre, anime.genre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, genre);
     }
 }

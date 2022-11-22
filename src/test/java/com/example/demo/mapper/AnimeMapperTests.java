@@ -2,6 +2,7 @@ package com.example.demo.mapper;
 
 import com.example.demo.entity.Anime;
 import com.github.database.rider.core.api.dataset.DataSet;
+import com.github.database.rider.core.api.dataset.ExpectedDataSet;
 import com.github.database.rider.spring.api.DBRider;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
@@ -51,5 +52,18 @@ class AnimeMapperTests {
     void 引数のidに対したアニメが存在しない時_空のOptionalを取得すること() {
         Optional<Anime> anime = animeMapper.findById(3);
         assertThat(anime).isEmpty();
+    }
+
+    @Test
+    @DataSet(value = "anime.yml")
+    @ExpectedDataSet(value = "expectedAfterInsertAnime.yml", ignoreCols = "id")
+    void アニメが登録できること() {
+        Anime anime = new Anime("Anime3", "Power");
+        assertThat(anime.getId()).isNull();
+        animeMapper.createAnime(anime);
+        assertThat(anime.getId()).isNotNull();
+        assertThat(anime.getId()).isGreaterThan(2);
+        assertThat(anime.getName()).isEqualTo("Anime3");
+        assertThat(anime.getGenre()).isEqualTo("Power");
     }
 }

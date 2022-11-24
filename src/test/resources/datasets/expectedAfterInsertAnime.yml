@@ -1,0 +1,12 @@
+anime:
+  - id: 1
+    name: "Anime1"
+    genre: "Action"
+
+  - id: 2
+    name: "Anime2"
+    genre: "Adventure"
+
+  - id: 3
+    name: "Anime3"
+    genre: "Power"

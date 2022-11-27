@@ -58,12 +58,12 @@ class AnimeMapperTests {
     @DataSet(value = "anime.yml")
     @ExpectedDataSet(value = "expectedAfterInsertAnime.yml", ignoreCols = "id")
     void アニメが登録できること() {
-        Anime anime = new Anime("Anime3", "Power");
+        Anime anime = new Anime("Anime3", "Powers");
         assertThat(anime.getId()).isNull();
         animeMapper.createAnime(anime);
         assertThat(anime.getId()).isNotNull();
         assertThat(anime.getId()).isGreaterThan(2);
         assertThat(anime.getName()).isEqualTo("Anime3");
-        assertThat(anime.getGenre()).isEqualTo("Power");
+        assertThat(anime.getGenre()).isEqualTo("Powers");
     }
 }

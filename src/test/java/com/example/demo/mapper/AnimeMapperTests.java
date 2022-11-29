@@ -66,4 +66,18 @@ class AnimeMapperTests {
         assertThat(anime.getName()).isEqualTo("Anime3");
         assertThat(anime.getGenre()).isEqualTo("Power");
     }
+
+    @Test
+    @DataSet(value = "anime.yml")
+    @ExpectedDataSet(value = "expectedAfterUpdateAnime.yml")
+    void アニメが更新できること() {
+        animeMapper.updateAnime(new Anime(2, "Anime4", "Stranger"));
+    }
+
+    @Test
+    @DataSet(value = "anime.yml")
+    @ExpectedDataSet(value = "expectedAfterDeleteAnime.yml")
+    void アニメが削除できること() {
+        animeMapper.deleteAnime(1);
+    }
 }

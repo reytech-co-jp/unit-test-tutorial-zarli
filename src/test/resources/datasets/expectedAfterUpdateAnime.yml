@@ -1,0 +1,8 @@
+anime:
+  - id: 1
+    name: "Anime1"
+    genre: "Action"
+
+  - id: 2
+    name: "Anime4"
+    genre: "Stranger"

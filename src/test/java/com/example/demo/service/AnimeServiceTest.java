@@ -45,36 +45,36 @@ class AnimeServiceTest {
 
     @Test
     public void アニメが全件取得できること() {
-        doReturn(List.of(new Anime(1, "Anime1", "Power"), new Anime(2, "Anime2", "Stranger"))).when(animeMapper).findAll();
+        doReturn(List.of(new Anime(1, "Anime1", "Action"), new Anime(2, "Anime2", "Psychological"))).when(animeMapper).findAll();
         List<Anime> actual = animeService.getAllAnime();
-        assertThat(actual).isEqualTo(List.of(new Anime(1, "Anime1", "Power"), new Anime(2, "Anime2", "Stranger")));
+        assertThat(actual).isEqualTo(List.of(new Anime(1, "Anime1", "Action"), new Anime(2, "Anime2", "Psychological")));
     }
 
     @Test
     public void アニメが取得できるときに1件アニメを返すこと() {
-        doReturn(Optional.of(new Anime(1, "Anime1", "Power"))).when(animeMapper).findById(1);
+        doReturn(Optional.of(new Anime(1, "Anime1", "Action"))).when(animeMapper).findById(1);
         Anime actual = animeService.getAnime(1);
-        assertThat(actual).isEqualTo(new Anime(1, "Anime1", "Power"));
+        assertThat(actual).isEqualTo(new Anime(1, "Anime1", "Action"));
     }
 
     @Test
     public void アニメが更新できること() {
-        doReturn(Optional.of(new Anime(1, "Anime1", "Power"))).when(animeMapper).findById(1);
-        animeService.updateAnime(1, "Anime3", "Action");
+        doReturn(Optional.of(new Anime(1, "Anime1", "Action"))).when(animeMapper).findById(1);
+        animeService.updateAnime(1, "Anime3", "History");
         verify(animeMapper).updateAnime(any(Anime.class));
     }
 
     @Test
     public void アニメが更新できないときに例外をthrowすること() {
         doReturn(Optional.empty()).when(animeMapper).findById(1);
-        assertThatThrownBy(() -> animeService.updateAnime(1, "Anime4", "Fighter"))
+        assertThatThrownBy(() -> animeService.updateAnime(1, "Anime4", "Romance"))
                 .isInstanceOf(ResourceNotFoundException.class)
                 .hasMessage("resource not found");
     }
 
     @Test
     public void アニメが削除できること() {
-        doReturn(Optional.of(new Anime(1, "Anime1", "Power"))).when(animeMapper).findById(1);
+        doReturn(Optional.of(new Anime(1, "Anime1", "Action"))).when(animeMapper).findById(1);
         animeService.deleteAnime(1);
         verify(animeMapper).deleteAnime(1);
     }

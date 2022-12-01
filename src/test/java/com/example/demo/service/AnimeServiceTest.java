@@ -14,7 +14,6 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
@@ -29,7 +28,7 @@ class AnimeServiceTest {
     AnimeMapper animeMapper;
 
     @Test
-    public void アニメが取得できないときに例外をthrowすること() {
+    public void アニメが空で取得できないときに例外をthrowすること() {
         doReturn(Optional.empty()).when(animeMapper).findById(1);
         assertThatThrownBy(() -> animeService.getAnime(1))
                 .isInstanceOf(ResourceNotFoundException.class)
@@ -38,9 +37,9 @@ class AnimeServiceTest {
 
     @Test
     public void アニメの登録ができること() {
-        doNothing().when(animeMapper).createAnime(any(Anime.class));
+        doNothing().when(animeMapper).createAnime(new Anime("name", "gene"));
         animeService.registerAnime("name", "genre");
-        verify(animeMapper).createAnime(any(Anime.class));
+        verify(animeMapper).createAnime(new Anime("name", "genre"));
     }
 
     @Test
@@ -61,11 +60,11 @@ class AnimeServiceTest {
     public void アニメが更新できること() {
         doReturn(Optional.of(new Anime(1, "Anime1", "Power"))).when(animeMapper).findById(1);
         animeService.updateAnime(1, "Anime3", "Action");
-        verify(animeMapper).updateAnime(any(Anime.class));
+        verify(animeMapper).updateAnime(new Anime(1, "Anime3", "Action"));
     }
 
     @Test
-    public void アニメが更新できないときに例外をthrowすること() {
+    public void アニメが空で更新するとき例外をthrowすること() {
         doReturn(Optional.empty()).when(animeMapper).findById(1);
         assertThatThrownBy(() -> animeService.updateAnime(1, "Anime4", "Fighter"))
                 .isInstanceOf(ResourceNotFoundException.class)
@@ -80,7 +79,7 @@ class AnimeServiceTest {
     }
 
     @Test
-    public void アニメが削除できないときに例外をthrowすること() {
+    public void アニメが空で削除するときに例外をthrowすること() {
         doReturn(Optional.empty()).when(animeMapper).findById(1);
         assertThatThrownBy(() -> animeService.deleteAnime(1))
                 .isInstanceOf(ResourceNotFoundException.class)

@@ -79,7 +79,7 @@ class AnimeServiceTest {
     }
 
     @Test
-    public void アニメが空で削除するときに例外をthrowすること() {
+    public void 削除象のアニメが存在しないときに例外をthrowすること() {
         doReturn(Optional.empty()).when(animeMapper).findById(1);
         assertThatThrownBy(() -> animeService.deleteAnime(1))
                 .isInstanceOf(ResourceNotFoundException.class)

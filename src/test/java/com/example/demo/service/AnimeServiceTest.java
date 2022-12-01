@@ -37,7 +37,7 @@ class AnimeServiceTest {
 
     @Test
     public void アニメの登録ができること() {
-        doNothing().when(animeMapper).createAnime(new Anime("name", "gene"));
+        doNothing().when(animeMapper).createAnime(new Anime("name", "genre"));
         animeService.registerAnime("name", "genre");
         verify(animeMapper).createAnime(new Anime("name", "genre"));
     }

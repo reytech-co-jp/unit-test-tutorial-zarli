@@ -64,7 +64,7 @@ class AnimeServiceTest {
     }
 
     @Test
-    public void アニメが空で更新するとき例外をthrowすること() {
+    public void 更新対象のアニメが存在しないときに例外をthrowすること() {
         doReturn(Optional.empty()).when(animeMapper).findById(1);
         assertThatThrownBy(() -> animeService.updateAnime(1, "Anime4", "Romance"))
                 .isInstanceOf(ResourceNotFoundException.class)

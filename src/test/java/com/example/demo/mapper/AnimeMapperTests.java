@@ -71,7 +71,7 @@ class AnimeMapperTests {
     @DataSet(value = "anime.yml")
     @ExpectedDataSet(value = "expectedAfterUpdateAnime.yml")
     void アニメが更新できること() {
-        animeMapper.updateAnime(new Anime(2, "Anime4", "Stranger"));
+        animeMapper.updateAnime(new Anime(2, "Anime4", "Psychological"));
     }
 
     @Test

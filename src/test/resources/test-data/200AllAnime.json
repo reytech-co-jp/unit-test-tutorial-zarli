@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "鬼滅の刃",
+    "genre": "ダークファンタジー"
+  },
+  {
+    "id": 2,
+    "name": "SPY×FAMILY",
+    "genre": "ホームコメディ"
+  },
+  {
+    "id": 3,
+    "name": "Dr.STONE",
+    "genre": "survival"
+  }
+]

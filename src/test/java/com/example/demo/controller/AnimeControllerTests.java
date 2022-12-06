@@ -48,7 +48,6 @@ class AnimeControllerTests {
     void アニメが全件取得できること() throws Exception {
         var response = List.of(new Anime(1, "鬼滅の刃", "ダークファンタジー"), new Anime(2, "SPY×FAMILY", "ホームコメディ"), new Anime(3, "Dr.STONE", "survival"));
 
-        String url = "/api/anime";
         Mockito.when(animeService.getAllAnime()).thenReturn(response);
         var result = mockMvc.perform(get(String.format("/api/anime"))
                         .accept(MediaType.APPLICATION_JSON)

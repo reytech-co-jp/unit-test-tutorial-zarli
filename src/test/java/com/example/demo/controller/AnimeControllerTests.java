@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.MediaType;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
+@WebMvcTest
 @AutoConfigureMockMvc
 class AnimeControllerTests {
     @Autowired
@@ -89,7 +89,7 @@ class AnimeControllerTests {
 
     @Test
     void アニメの登録ができること() throws Exception {
-        Anime anime = new Anime("Your Name", "Romantic Fantasy");
+        var anime = new Anime("Your Name", "Romantic Fantasy");
 
         var result = mockMvc.perform(post(String.format("/api/anime/"))
                         .accept(MediaType.APPLICATION_JSON)
@@ -103,7 +103,7 @@ class AnimeControllerTests {
     @Test
     void アニメの更新ができること() throws Exception {
         var id = 1;
-        Anime anime = new Anime(id, "Your Name", "Romantic Fantasy");
+        var anime = new Anime(id, "Your Name", "Romantic Fantasy");
 
         var result = mockMvc.perform(patch(String.format("/api/anime/%d", id))
                         .accept(MediaType.APPLICATION_JSON)
@@ -117,7 +117,7 @@ class AnimeControllerTests {
     @Test
     void アニメの削除ができること() throws Exception {
         var id = 1;
-        Anime anime = new Anime(id, "Your Name", "Romantic Fantasy");
+        var anime = new Anime(id, "Your Name", "Romantic Fantasy");
 
         var result = mockMvc.perform(delete(String.format("/api/anime/%d", id))
                         .accept(MediaType.APPLICATION_JSON)
@@ -134,7 +134,7 @@ class AnimeControllerTests {
         var name = "Your Name";
         var genre = "Romantic Fantasy";
 
-        Anime anime = new Anime(id, name, genre);
+        var anime = new Anime(id, name, genre);
 
         doThrow(new ResourceNotFoundException("resource not found")).when(animeService).updateAnime(id, name, genre);
         var result = mockMvc.perform(patch(String.format("/api/anime/%d", id))

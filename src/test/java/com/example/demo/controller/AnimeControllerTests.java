@@ -6,6 +6,7 @@ import com.example.demo.service.AnimeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -53,7 +54,7 @@ class AnimeControllerTests {
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
 
-        assertThat(objectMapper.readTree(getJsonFileData("200AllAnime.json"))).isEqualTo(objectMapper.readTree(result));
+        JSONAssert.assertEquals(String.valueOf(objectMapper.readTree(getJsonFileData("200AllAnime.json"))), result, true);
     }
 
     @Test
@@ -66,7 +67,7 @@ class AnimeControllerTests {
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
 
-        assertThat(objectMapper.readTree(getJsonFileData("200OneAnime.json"))).isEqualTo(objectMapper.readTree(result));
+        JSONAssert.assertEquals(String.valueOf(objectMapper.readTree(getJsonFileData("200OneAnime.json"))), result, true);
     }
 
     @Test

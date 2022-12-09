@@ -5,13 +5,13 @@
     "genre": "ダークファンタジー"
   },
   {
-    "id": 2,
     "name": "SPY×FAMILY",
+    "id": 2,
     "genre": "ホームコメディ"
   },
   {
+    "genre": "survival",
     "id": 3,
-    "name": "Dr.STONE",
-    "genre": "survival"
+    "name": "Dr.STONE"
   }
 ]

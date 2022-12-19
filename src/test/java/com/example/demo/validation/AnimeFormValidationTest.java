@@ -22,7 +22,7 @@ public class AnimeFormValidationTest {
 
         Set<ConstraintViolation<AnimeForm>> constraintViolations = validator.validate(animeForm);
 
-        assertThat(constraintViolations.size() == 1);
+        assertThat(constraintViolations.size()).isEqualTo(1);
         assertThat(constraintViolations)
                 .extracting(
                         propertyPath -> propertyPath.getPropertyPath().toString(),
@@ -40,7 +40,7 @@ public class AnimeFormValidationTest {
 
         Set<ConstraintViolation<AnimeForm>> constraintViolations = validator.validate(animeForm);
 
-        assertThat(constraintViolations.size() == 1);
+        assertThat(constraintViolations.size()).isEqualTo(1);
         assertThat(constraintViolations)
                 .extracting(
                         propertyPath -> propertyPath.getPropertyPath().toString(),
@@ -51,14 +51,14 @@ public class AnimeFormValidationTest {
     }
 
     @Test
-    public void すべてのリクエストがNullの場合バリデーションエラーになること() {
+    public void すべてのフィールドがNullの場合バリデーションエラーになること() {
         AnimeForm animeForm = new AnimeForm();
         animeForm.setName(null);
         animeForm.setGenre(null);
 
         Set<ConstraintViolation<AnimeForm>> constraintViolations = validator.validate(animeForm);
 
-        assertThat(constraintViolations.size() == 2);
+        assertThat(constraintViolations.size()).isEqualTo(2);
         assertThat(constraintViolations)
                 .extracting(
                         propertyPath -> propertyPath.getPropertyPath().toString(),
@@ -70,13 +70,13 @@ public class AnimeFormValidationTest {
     }
 
     @Test
-    public void 正式なリクエストの場合バリデーションエラーにならないこと() {
+    public void 正式なフィールドの場合バリデーションエラーにならないこと() {
         AnimeForm animeForm = new AnimeForm();
         animeForm.setName("Your Name");
         animeForm.setGenre("Romance");
 
         Set<ConstraintViolation<AnimeForm>> constraintViolations = validator.validate(animeForm);
 
-        assertThat(constraintViolations.size() == 0);
+        assertThat(constraintViolations.size()).isEqualTo(0);
     }
 }

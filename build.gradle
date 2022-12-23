@@ -23,6 +23,7 @@ dependencies {
     implementation group: 'com.github.database-rider', name: 'rider-spring', version: '1.32.3'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.2.2'
+    testImplementation group: 'org.mockito', name: 'mockito-inline', version: '2.7.21'
     spotbugsPlugins "com.mebigfatguy.fb-contrib:fb-contrib:7.4.7"
 }
 
